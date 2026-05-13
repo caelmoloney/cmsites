@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Northstar Website Studio is a website creation company that builds custom, SEO-friendly, conversion-focused websites for small businesses, startups, and service providers." />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
-  <meta name="theme-color" content="#f9fafb" />
+  <meta name="theme-color" content="#0b1020" />
   <title>Website Creation Company | Custom Website Design That Builds Trust</title>
 
   <meta property="og:type" content="website" />
@@ -55,41 +55,47 @@
 
   <style>
     :root {
-      --bg: #f9fafb;
-      --bg-2: #ffffff;
-      --text: #111827;
-      --muted: #4b5563;
-      --line: #e5e7eb;
-      --brand: #2563eb;
-      --brand-hover: #1d4ed8;
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      --radius-xl: 16px;
-      --radius-lg: 12px;
-      --radius-md: 8px;
-      --max: 1080px;
+      --bg: #0b1020;
+      --bg-soft: #10182d;
+      --bg-soft-2: #0f1728;
+      --text: #eef4ff;
+      --muted: #b6c3dc;
+      --line: rgba(255,255,255,.10);
+      --line-strong: rgba(255,255,255,.16);
+      --brand: #9db3ff;
+      --brand-2: #a2e4ff;
+      --accent: #7ee0b4;
+      --shadow: 0 24px 70px rgba(0,0,0,.32);
+      --radius-xl: 26px;
+      --radius-lg: 18px;
+      --max: 1140px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       line-height: 1.65;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 18% 0%, rgba(157,179,255,.12), transparent 26%),
+        radial-gradient(circle at 82% 8%, rgba(162,228,255,.08), transparent 26%),
+        linear-gradient(180deg, #0a1020 0%, var(--bg) 42%, #070b14 100%);
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; transition: color 0.2s; }
+    a { color: inherit; text-decoration: none; }
     button, input, textarea, select { font: inherit; }
+    .container { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
 
     .skip-link {
       position: absolute;
       left: 1rem;
       top: -60px;
-      background: var(--text);
-      color: #fff;
+      background: #fff;
+      color: #000;
       padding: .75rem 1rem;
       border-radius: 999px;
       z-index: 1000;
@@ -97,18 +103,13 @@
     }
     .skip-link:focus { top: 1rem; }
 
-    .container {
-      width: min(100% - 2rem, var(--max));
-      margin-inline: auto;
-    }
-
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(249, 250, 251, 0.88);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line);
+      z-index: 120;
+      background: rgba(8,13,25,.80);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
     .nav-wrap {
       display: flex;
@@ -121,282 +122,480 @@
       display: inline-flex;
       align-items: center;
       gap: .8rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: .01em;
     }
     .brand-mark {
-      width: 2rem;
-      height: 2rem;
-      border-radius: 6px;
-      background: var(--brand);
-      color: #fff;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
       display: grid;
       place-items: center;
-      font-weight: 800;
-      font-size: 1.2rem;
+      color: #07111b;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: 0 12px 28px rgba(157,179,255,.16);
+      font-weight: 900;
     }
     .nav {
       display: flex;
       align-items: center;
-      gap: 2rem;
+      gap: 1.25rem;
     }
     .nav a {
       color: var(--muted);
-      font-weight: 500;
+      font-weight: 600;
       font-size: .95rem;
+      padding: .35rem 0;
     }
-    .nav a:hover, .nav a:focus-visible { color: var(--text); }
-
-    .btn {
+    .nav a:hover, .nav a:focus-visible { color: #fff; }
+    .nav-cta, .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: 6px;
-      padding: .75rem 1.5rem;
-      font-weight: 600;
-      transition: all 0.2s ease;
-      cursor: pointer;
+      gap: .55rem;
+      border-radius: 999px;
+      padding: .92rem 1.2rem;
+      font-weight: 700;
+      transition: transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease;
     }
-    .btn-primary {
-      background: var(--brand);
-      color: #fff;
-      border: 1px solid transparent;
+    .nav-cta, .btn-primary {
+      color: #06111b;
+      background: linear-gradient(135deg, var(--brand-2), #d5f7ff);
+      box-shadow: 0 12px 28px rgba(162,228,255,.12);
     }
-    .btn-primary:hover { background: var(--brand-hover); }
     .btn-secondary {
-      background: transparent;
-      color: var(--text);
+      color: #fff;
       border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
     }
-    .btn-secondary:hover { background: #f3f4f6; }
+    .nav-cta:hover, .nav-cta:focus-visible, .btn:hover, .btn:focus-visible { transform: translateY(-2px); }
     .menu-toggle {
       display: none;
       width: 46px;
       height: 46px;
       border-radius: 12px;
       border: 1px solid var(--line);
-      background: #fff;
-      color: var(--text);
+      background: rgba(255,255,255,.03);
+      color: #fff;
       cursor: pointer;
     }
 
-    section { padding: 6rem 0; border-bottom: 1px solid var(--line); }
-    section:last-of-type { border-bottom: none; }
+    section { padding: 5.3rem 0; }
 
     .eyebrow {
-      display: block;
-      color: var(--brand);
-      font-size: .85rem;
-      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      color: #dfe9ff;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 1rem;
+      letter-spacing: .08em;
+      font-size: .78rem;
+      font-weight: 700;
     }
-    h1, h2, h3, h4 { margin: 0; color: var(--text); }
+    .eyebrow::before {
+      content: '';
+      width: .45rem;
+      height: .45rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand-2), var(--brand));
+    }
+
     .section-head {
-      margin-bottom: 3.5rem;
-      max-width: 48rem;
+      max-width: 70ch;
+      margin-bottom: 2rem;
     }
     .section-head h2 {
-      font-size: clamp(2rem, 4vw, 2.75rem);
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 1rem;
+      margin: .9rem 0 .8rem;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
     }
     .section-head p {
-      font-size: 1.125rem;
-      color: var(--muted);
       margin: 0;
+      color: var(--muted);
+      font-size: 1.06rem;
     }
 
-    .hero { padding: 8rem 0 6rem; background: var(--bg-2); }
-    .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      line-height: 1.05;
+    .hero {
+      padding: 4.5rem 0 2rem;
+      overflow: clip;
+    }
+    .hero-shell {
+      position: relative;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 30px;
+      padding: clamp(1.4rem, 3vw, 2rem);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)),
+        linear-gradient(135deg, rgba(157,179,255,.12), rgba(162,228,255,.05));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .hero-shell::after {
+      content: '';
+      position: absolute;
+      inset: auto -12% -30% auto;
+      width: 26rem;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(157,179,255,.16), transparent 65%);
+      pointer-events: none;
+    }
+    .hero-layout {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .hero-copy h1 {
+      margin: .95rem 0 1rem;
+      font-size: clamp(2.6rem, 6vw, 5.2rem);
+      line-height: .98;
+      letter-spacing: -0.05em;
+      max-width: 12ch;
+    }
+    .hero-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.8vw, 1.14rem);
+      max-width: 60ch;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+      margin-top: 1.5rem;
+    }
+    .hero-aside {
+      display: grid;
+      gap: 1rem;
+      justify-items: start;
+    }
+    .hero-kicker {
+      color: #dfe9ff;
+      font-size: .92rem;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .hero-copy-block {
+      padding-left: 1.2rem;
+      border-left: 1px solid rgba(255,255,255,.12);
+      margin-top: 1rem;
+    }
+    .hero-copy-block p { color: var(--muted); }
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .9rem;
+      width: 100%;
+    }
+    .metric {
+      padding-top: .95rem;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+    .metric strong {
+      display: block;
+      font-size: 1.55rem;
+      line-height: 1;
+      margin-bottom: .25rem;
+    }
+    .metric span { color: var(--muted); font-size: .92rem; }
+
+    .split-row {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+    .split-row.alt { grid-template-columns: 1.1fr .9fr; }
+    .visual-orb {
+      min-height: 240px;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+    .orb {
+      width: min(320px, 78vw);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.22), transparent 25%),
+        radial-gradient(circle at 50% 50%, rgba(162,228,255,.16), rgba(111,135,255,.08) 50%, rgba(8,13,25,.88) 82%),
+        linear-gradient(135deg, rgba(157,179,255,.18), rgba(111,135,255,.08));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 22px 60px rgba(0,0,0,.26);
+      position: relative;
+    }
+    .orb::after {
+      content: '';
+      position: absolute;
+      inset: 12%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,0));
+    }
+    .orb-label {
+      position: absolute;
+      bottom: 0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #dfe9ff;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .copy-block {
+      padding: 1rem 0;
+    }
+    .copy-block h2 {
+      margin: .9rem 0 .8rem;
+      font-size: clamp(1.8rem, 3vw, 2.55rem);
+      line-height: 1.06;
       letter-spacing: -0.04em;
-      max-width: 15ch;
-      margin-bottom: 1.5rem;
     }
-    .hero p {
-      font-size: 1.25rem;
-      color: var(--muted);
-      max-width: 50ch;
-      margin-bottom: 2.5rem;
+    .copy-block p { margin: 0; color: var(--muted); }
+    .copy-block ul {
+      margin: 1rem 0 0;
+      padding-left: 1.15rem;
+      color: #dfe9ff;
     }
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .copy-block li + li { margin-top: .35rem; }
 
-    .grid-3 {
+    .rule-list {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+      gap: 0;
+      border-top: 1px solid var(--line);
     }
-    .grid-2 {
+    .rule-item {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-    }
-
-    .clean-card {
-      background: var(--bg-2);
-      border: 1px solid var(--line);
-      padding: 2rem;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-sm);
-    }
-    .clean-card h3 { margin-bottom: 0.75rem; font-size: 1.25rem; }
-    .clean-card p { color: var(--muted); margin: 0; }
-
-    .tag {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      background: #f3f4f6;
-      color: var(--muted);
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-layout {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .contact-shell {
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      background: #fff;
-      box-shadow: var(--shadow-sm);
-      padding: 2rem;
-    }
-    .form-group {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      align-items: flex-start;
-      padding: 1.35rem 0;
+      grid-template-columns: 120px 1fr;
+      gap: 1rem;
+      align-items: start;
+      padding: 1.15rem 0;
       border-bottom: 1px solid var(--line);
     }
-    .form-group:first-of-type { border-top: 1px solid var(--line); }
-    .form-group label {
-      font-weight: 500;
-      color: var(--text);
-      padding-top: 0.5rem;
+    .rule-item .num {
+      color: #dfe9ff;
+      font-weight: 800;
+      letter-spacing: .02em;
     }
-    .field {
-      width: 100%;
-      background: transparent;
-      border: none;
-      color: var(--text);
-      padding: 0.5rem 0;
-      outline: none;
-      font-size: 1rem;
+    .rule-item h3 { margin: 0 0 .35rem; }
+    .rule-item p { margin: 0; color: var(--muted); }
+
+    .portfolio-list, .testimonial-list, .faq {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
     }
-    .field::placeholder { color: #9ca3af; }
-    .field:focus { box-shadow: 0 1px 0 0 var(--brand); }
-    textarea.field { min-height: 120px; resize: vertical; }
-    .submit-row {
-      display: flex;
-      justify-content: flex-end;
-      padding-top: 2rem;
-      gap: 1rem;
-      align-items: center;
-      flex-wrap: wrap;
+    .list-row {
+      padding: 1.15rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .list-row .label {
+      color: #dfe9ff;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      font-size: .78rem;
+      font-weight: 700;
+      margin-bottom: .45rem;
+      display: inline-block;
+    }
+    .list-row h3 { margin: 0 0 .35rem; }
+    .list-row p { margin: 0; color: var(--muted); max-width: 68ch; }
+    .list-row blockquote {
+      margin: 0;
+      padding: 0;
+      color: #e8f0ff;
+      font-size: 1.05rem;
+      max-width: 70ch;
+    }
+    .list-row cite {
+      display: block;
+      margin-top: .65rem;
+      color: var(--muted);
+      font-style: normal;
+      font-size: .92rem;
     }
 
-    .faq {
-      display: grid;
-      gap: .8rem;
-      max-width: 900px;
-      margin-inline: auto;
-    }
     .faq-item {
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: #fff;
+      border-bottom: 1px solid var(--line);
       overflow: clip;
     }
     .faq-question {
       width: 100%;
-      text-align: left;
-      padding: 1rem 1.15rem;
-      color: var(--text);
-      background: transparent;
       border: 0;
+      background: transparent;
+      color: #fff;
+      font-weight: 700;
+      padding: 1rem 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
       cursor: pointer;
-      font-weight: 700;
+      text-align: left;
     }
-    .faq-question:focus-visible { outline: 2px solid var(--brand); outline-offset: -2px; }
-    .faq-question span:last-child { transition: transform .2s ease; color: var(--brand); }
+    .faq-question:focus-visible { outline: 2px solid var(--brand-2); outline-offset: 3px; }
+    .faq-question span:last-child { transition: transform .2s ease; color: var(--brand-2); }
     .faq-item[aria-expanded="true"] .faq-question span:last-child { transform: rotate(45deg); }
     .faq-answer {
       max-height: 0;
       overflow: hidden;
       transition: max-height .28s ease;
-      padding: 0 1.15rem;
       color: var(--muted);
     }
     .faq-answer-inner { padding: 0 0 1rem; }
 
-    footer {
-      padding: 4rem 0;
-      background: var(--bg-2);
-      color: var(--muted);
-      font-size: 0.9rem;
+    .contact-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 1.2rem;
+      align-items: start;
+    }
+    .contact-copy h2 {
+      margin: .9rem 0 .75rem;
+      font-size: clamp(1.9rem, 3vw, 2.6rem);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+    }
+    .contact-copy p { margin: 0; color: var(--muted); max-width: 54ch; }
+    .contact-lines {
+      margin-top: 1.15rem;
       border-top: 1px solid var(--line);
     }
-    .footer-grid {
+    .contact-line {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       gap: 1rem;
+      padding: .9rem 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+    }
+    .contact-line strong { color: #fff; }
+
+    .contact-form-shell {
+      padding: 0;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+    }
+    .contact-form {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .form-group {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .form-group:last-of-type { border-bottom: 0; }
+    .form-group label {
+      color: #eaf1ff;
+      font-weight: 700;
+    }
+    .field {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid rgba(255,255,255,.16);
+      background: transparent;
+      color: #fff;
+      padding: .65rem 0 .7rem;
+      outline: none;
+      border-radius: 0;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .field::placeholder { color: rgba(182,195,220,.65); }
+    .field:focus { border-bottom-color: var(--brand-2); box-shadow: 0 1px 0 0 var(--brand-2); }
+    textarea.field { min-height: 128px; resize: vertical; }
+    .submit-row {
+      display: flex;
+      justify-content: flex-end;
+      gap: .85rem;
+      align-items: center;
+      padding-top: 1rem;
       flex-wrap: wrap;
     }
+    .form-note { color: var(--muted); font-size: .92rem; }
+    .status {
+      min-height: 1.2em;
+      color: #dfe9ff;
+      font-size: .92rem;
+    }
+
+    footer {
+      padding: 2.4rem 0 3rem;
+      color: var(--muted);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      gap: 1rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--line);
+    }
+    .small { font-size: .92rem; }
+    .footer-grid a:hover, .footer-grid a:focus-visible { color: #fff; }
 
     .reveal {
       opacity: 0;
-      transform: translateY(12px);
-      transition: opacity .45s ease, transform .45s ease;
+      transform: translateY(14px);
+      transition: opacity .5s ease, transform .5s ease;
     }
     .reveal.is-visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    @media (max-width: 768px) {
-      .grid-3, .grid-2 { grid-template-columns: 1fr; }
-      .nav { display: none; }
+    @media (max-width: 1040px) {
+      .hero-layout, .split-row, .split-row.alt, .contact-layout, .footer-grid { grid-template-columns: 1fr; }
+      .grid-2, .grid-3, .portfolio-grid, .testimonial-grid, .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-copy h1 { max-width: 14ch; }
+    }
+
+    @media (max-width: 760px) {
       .menu-toggle { display: inline-grid; place-items: center; }
       .nav-wrap { position: relative; }
-      .nav.is-open {
-        display: flex;
+      .nav {
         position: absolute;
         top: calc(100% + .75rem);
         left: 0;
         right: 0;
+        display: none;
         flex-direction: column;
+        align-items: stretch;
         gap: 0;
         padding: .5rem;
-        border-radius: 14px;
-        background: rgba(255,255,255,.98);
-        border: 1px solid var(--line);
-        box-shadow: var(--shadow-sm);
+        border-radius: 18px;
+        background: rgba(8,13,25,.98);
+        border: 1px solid rgba(255,255,255,.08);
+        box-shadow: var(--shadow);
       }
-      .nav a, .nav .btn {
+      .nav.is-open { display: flex; }
+      .nav a, .nav-cta {
         width: 100%;
         justify-content: flex-start;
         padding: .95rem 1rem;
+        border-radius: 12px;
       }
-      .form-group {
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-      }
-      .submit-row {
-        justify-content: flex-start;
-      }
-      .hero { padding-top: 5rem; }
+      .grid-2, .grid-3, .portfolio-grid, .testimonial-grid, .process-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 3.7rem; }
+      .btn { width: 100%; }
+      .hero-actions { flex-direction: column; }
+      .rule-item, .form-group { grid-template-columns: 1fr; }
+      .submit-row { justify-content: flex-start; }
+      .visual-orb { min-height: 210px; }
+    }
+
+    @media (max-width: 520px) {
+      .container { width: min(100% - 1.1rem, var(--max)); }
+      section { padding: 3.2rem 0; }
+      .brand span:last-child { font-size: .98rem; }
     }
   </style>
 </head>
@@ -409,82 +608,157 @@
         <span class="brand-mark">N</span>
         <span>Northstar Studio</span>
       </a>
+
       <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="siteNav">☰</button>
+
       <nav class="nav" id="siteNav" aria-label="Primary">
         <a href="#services">Services</a>
         <a href="#process">Process</a>
         <a href="#results">Results</a>
-        <a href="#contact" class="btn btn-primary">Book Strategy Call</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="#contact">Book Strategy Call</a>
       </nav>
     </div>
   </header>
 
   <main id="main-content">
     <section class="hero" id="home">
-      <div class="container reveal">
-        <span class="eyebrow">Strategic Web Design</span>
-        <h1>Custom website design built for trust and conversion.</h1>
-        <p>We create clean, SEO-friendly websites for service providers and startups who need a stronger first impression and a clearer path to leads.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#contact">Start a Project</a>
-          <a class="btn btn-secondary" href="#services">Explore Services</a>
+      <div class="container hero-shell reveal">
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <span class="eyebrow">Strategic Web Design</span>
+            <h1>Custom website design built for trust and conversion.</h1>
+            <p>We create clean, SEO-friendly websites for service providers and startups who need a stronger first impression and a clearer path to leads.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact">Start a Project</a>
+              <a class="btn btn-secondary" href="#services">Explore Services</a>
+            </div>
+          </div>
+
+          <aside class="hero-aside" aria-label="Website strategy summary">
+            <div class="hero-kicker">Built to support business growth</div>
+            <div class="hero-copy-block">
+              <p>We focus on the pages, messaging, and structure that help visitors trust your business and take the next step.</p>
+            </div>
+            <div class="hero-metrics">
+              <div class="metric"><strong>Clear</strong><span>Simple messaging and intentional page flow.</span></div>
+              <div class="metric"><strong>Fast</strong><span>Lightweight builds with mobile-first performance.</span></div>
+              <div class="metric"><strong>Findable</strong><span>SEO-friendly websites with strong structure.</span></div>
+              <div class="metric"><strong>Trusted</strong><span>Professional design that supports credibility.</span></div>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
 
     <section id="services">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Core Capabilities</span>
-          <h2>Designed for business goals</h2>
-          <p>We build systems that feel polished, make sense to users, and strip away unnecessary clutter.</p>
+      <div class="container split-row reveal">
+        <div class="visual-orb">
+          <div class="orb" aria-hidden="true"></div>
+          <div class="orb-label">Custom website design</div>
         </div>
-
-        <div class="grid-2">
-          <article class="clean-card reveal">
-            <span class="tag">Custom Design</span>
-            <h3>Reflect your brand clearly</h3>
-            <p>Layouts, visuals, and copy tailored to your business, avoiding generic templates to create a truly professional presence.</p>
-          </article>
-          <article class="clean-card reveal">
-            <span class="tag">Responsive Build</span>
-            <h3>Work well on every screen</h3>
-            <p>Mobile-first structure, readable spacing, and easy navigation help your site feel confident and usable everywhere.</p>
-          </article>
-          <article class="clean-card reveal">
-            <span class="tag">SEO Structure</span>
-            <h3>Built for search visibility</h3>
-            <p>Semantic HTML, sensible headings, and natural keyword placement to support better indexing and relevance.</p>
-          </article>
-          <article class="clean-card reveal">
-            <span class="tag">Web Development</span>
-            <h3>Clean, reliable performance</h3>
-            <p>Every build is kept lightweight, maintainable, and polished so the final site feels fast from the first click.</p>
-          </article>
+        <div class="copy-block">
+          <span class="eyebrow">Services</span>
+          <h2>Website services designed for real business goals</h2>
+          <p>We build responsive web design systems that feel polished, make sense to users, and strip away unnecessary clutter.</p>
+          <div class="rule-list" style="margin-top:1rem;">
+            <div class="rule-item">
+              <div class="num">01</div>
+              <div>
+                <h3>Custom website design</h3>
+                <p>Design that reflects your brand clearly and presents your business with confidence.</p>
+              </div>
+            </div>
+            <div class="rule-item">
+              <div class="num">02</div>
+              <div>
+                <h3>Responsive web design</h3>
+                <p>Layouts that adapt naturally across mobile, tablet, and desktop screens.</p>
+              </div>
+            </div>
+            <div class="rule-item">
+              <div class="num">03</div>
+              <div>
+                <h3>SEO-friendly websites</h3>
+                <p>Semantic structure and natural keyword placement that support visibility.</p>
+              </div>
+            </div>
+            <div class="rule-item">
+              <div class="num">04</div>
+              <div>
+                <h3>Professional web development</h3>
+                <p>Clean code and reliable performance that keep the site fast and maintainable.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="process" style="background: var(--bg-2);">
+    <section class="spotlight" id="benefits">
+      <div class="container split-row alt reveal">
+        <div class="copy-block">
+          <span class="eyebrow">Benefits</span>
+          <h2>What a better website can change for your business</h2>
+          <p>A strategic website does more than look good. It helps the right people understand your value and makes it easier for them to act.</p>
+          <div class="benefit-list" style="margin-top:1rem;">
+            <div class="benefit-item">
+              <div class="check">✓</div>
+              <div><h3>More trust</h3><p>Visitors are more likely to stay when the design feels polished and credible.</p></div>
+            </div>
+            <div class="benefit-item">
+              <div class="check">✓</div>
+              <div><h3>Better clarity</h3><p>Clean page structure helps people understand your offer without working for it.</p></div>
+            </div>
+            <div class="benefit-item">
+              <div class="check">✓</div>
+              <div><h3>More conversions</h3><p>Thoughtful calls to action and page flow support inquiries, bookings, and contact forms.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="visual-orb">
+          <div class="orb" aria-hidden="true"></div>
+          <div class="orb-label">Why it matters</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">Our Process</span>
-          <h2>A straightforward path to launch</h2>
+          <span class="eyebrow">Process</span>
+          <h2>A straightforward process that keeps the project moving</h2>
           <p>Each step is designed to make the final website more useful, clearer, and more effective without wasting your time.</p>
         </div>
 
-        <div class="grid-3">
-          <div class="clean-card reveal">
-            <h3 style="margin-bottom: 0.5rem;">01. Discovery & Plan</h3>
-            <p>We map the pages, structure, and message hierarchy to support user flow.</p>
+        <div class="rule-list reveal">
+          <div class="rule-item">
+            <div class="num">01</div>
+            <div>
+              <h3>Discovery</h3>
+              <p>We learn about your business, audience, and priorities so the website is built around the right goals.</p>
+            </div>
           </div>
-          <div class="clean-card reveal">
-            <h3 style="margin-bottom: 0.5rem;">02. Design & Build</h3>
-            <p>We create the layout, visuals, and responsive implementation with strict care.</p>
+          <div class="rule-item">
+            <div class="num">02</div>
+            <div>
+              <h3>Planning</h3>
+              <p>We map the pages, structure, and message hierarchy to support user flow and SEO-friendly websites.</p>
+            </div>
           </div>
-          <div class="clean-card reveal">
-            <h3 style="margin-bottom: 0.5rem;">03. Review & Launch</h3>
-            <p>We refine details, test across devices, and deliver a site ready for real customers.</p>
+          <div class="rule-item">
+            <div class="num">03</div>
+            <div>
+              <h3>Design and build</h3>
+              <p>We create the layout, visuals, and responsive web design implementation with care and consistency.</p>
+            </div>
+          </div>
+          <div class="rule-item">
+            <div class="num">04</div>
+            <div>
+              <h3>Review and launch</h3>
+              <p>We refine details, test across devices, and deliver a site that feels ready for real customers.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -493,27 +767,52 @@
     <section id="results">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">The Results</span>
-          <h2>Built to support action</h2>
-          <p>Examples of projects organized to look professional and drive user engagement.</p>
+          <span class="eyebrow">Results</span>
+          <h2>Examples of the kind of work we create</h2>
+          <p>These projects are built to look professional and support action, not just fill space.</p>
         </div>
 
-        <div class="grid-3">
-          <article class="clean-card reveal">
-            <span class="tag">Lead Gen</span>
-            <h3>Service Homepage</h3>
-            <p>Positioned the offer more clearly, reducing bounce rates and moving visitors to inquiry faster.</p>
-          </article>
-          <article class="clean-card reveal">
-            <span class="tag">Startup</span>
-            <h3>Brand Launch</h3>
-            <p>Created a confident presence that helped the business look established on day one.</p>
-          </article>
-          <article class="clean-card reveal">
-            <span class="tag">SEO</span>
-            <h3>Content Hub</h3>
-            <p>Organized site architecture to capture search intent while keeping the reading experience natural.</p>
-          </article>
+        <div class="portfolio-list reveal">
+          <div class="list-row">
+            <div class="label">Lead generation</div>
+            <h3>Service Business Homepage</h3>
+            <p>Positioned the offer more clearly and reduced unnecessary content so visitors could move toward inquiry faster.</p>
+          </div>
+          <div class="list-row">
+            <div class="label">Startup launch</div>
+            <h3>New Brand Website</h3>
+            <p>Created a clean, confident presence that helped the business look established from the beginning.</p>
+          </div>
+          <div class="list-row">
+            <div class="label">SEO structure</div>
+            <h3>Service Pages and Support Content</h3>
+            <p>Organized the site to support search intent while keeping the reading experience natural and easy to follow.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Testimonials</span>
+          <h2>What clients say after launching their new site</h2>
+          <p>Realistic feedback from teams that wanted a more polished online presence.</p>
+        </div>
+
+        <div class="testimonial-list reveal">
+          <div class="list-row">
+            <blockquote>“The site feels professional without being flashy. It gives us the kind of presence we were missing.”</blockquote>
+            <cite>— Founder, consulting firm</cite>
+          </div>
+          <div class="list-row">
+            <blockquote>“We started getting better inquiries because people understood what we do much faster.”</blockquote>
+            <cite>— Owner, home services company</cite>
+          </div>
+          <div class="list-row">
+            <blockquote>“Everything felt organized, thoughtful, and easy to follow. The finished site looks sharp and natural.”</blockquote>
+            <cite>— Director, local agency</cite>
+          </div>
         </div>
       </div>
     </section>
@@ -522,59 +821,81 @@
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">FAQ</span>
-          <h2>Questions buyers ask before getting started</h2>
-          <p>Answers that help visitors understand the process, timing, and value of custom web design.</p>
+          <h2>Common questions about website creation services</h2>
+          <p>Helpful answers for buyers comparing custom website design, SEO-friendly websites, and professional web development.</p>
         </div>
 
-        <div class="faq" id="faqAccordion">
-          <div class="faq-item reveal" aria-expanded="false">
+        <div class="faq reveal" id="faqAccordion">
+          <div class="faq-item" aria-expanded="false">
             <button class="faq-question" type="button"><span>What makes a website effective for a small business?</span><span>+</span></button>
             <div class="faq-answer"><div class="faq-answer-inner">An effective site explains the offer clearly, builds trust quickly, and makes it easy for visitors to contact you, request a quote, or book a call.</div></div>
           </div>
-          <div class="faq-item reveal" aria-expanded="false">
+          <div class="faq-item" aria-expanded="false">
             <button class="faq-question" type="button"><span>Do you build SEO-friendly websites from the start?</span><span>+</span></button>
             <div class="faq-answer"><div class="faq-answer-inner">Yes. We build with semantic HTML, sensible heading structure, clean content organization, and natural keyword use to support search visibility.</div></div>
           </div>
-          <div class="faq-item reveal" aria-expanded="false">
+          <div class="faq-item" aria-expanded="false">
             <button class="faq-question" type="button"><span>Can you redesign an existing website?</span><span>+</span></button>
             <div class="faq-answer"><div class="faq-answer-inner">Absolutely. Many clients come to us because their current site feels outdated, slow, or difficult to use. We can rebuild it into something more effective and professional.</div></div>
           </div>
-          <div class="faq-item reveal" aria-expanded="false">
+          <div class="faq-item" aria-expanded="false">
             <button class="faq-question" type="button"><span>How long does a typical project take?</span><span>+</span></button>
             <div class="faq-answer"><div class="faq-answer-inner">Timelines depend on scope, but most service-based websites can move from planning to launch in a few weeks if feedback and content are provided on time.</div></div>
+          </div>
+          <div class="faq-item" aria-expanded="false">
+            <button class="faq-question" type="button"><span>Why choose custom website design instead of a template?</span><span>+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">Custom website design gives you a site shaped around your brand, your goals, and your audience. It usually performs better because it is built for your business instead of adapted from a generic layout.</div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" style="background: var(--bg-2);">
+    <section id="contact">
       <div class="container contact-layout reveal">
-        <div class="section-head" style="max-width: 100%; text-align: center; margin-bottom: 2rem;">
-          <h2>Let's discuss your project</h2>
-          <p>Fill out the form below and we will be in touch within 24 hours.</p>
+        <div class="contact-copy">
+          <span class="eyebrow">Contact</span>
+          <h2>Let’s build a website that feels professional and earns trust.</h2>
+          <p>If you need a website creation company that values strategy, usability, SEO, and clean design, Northstar Website Studio is ready to help.</p>
+
+          <div class="contact-lines">
+            <div class="contact-line"><strong>Location</strong><span>Columbus, OH</span></div>
+            <div class="contact-line"><strong>Email</strong><a href="mailto:hello@example.com">hello@example.com</a></div>
+            <div class="contact-line"><strong>Phone</strong><a href="tel:+16145550198">(614) 555-0198</a></div>
+          </div>
         </div>
 
-        <div class="contact-shell">
-          <form action="#" method="POST" class="contact-form">
+        <div class="contact-form-shell">
+          <form class="contact-form" id="inquiryForm">
             <div class="form-group">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" class="field" placeholder="Jane Doe" required />
+              <label for="name">Name</label>
+              <input class="field" id="name" name="name" type="text" placeholder="Your name" required />
             </div>
             <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" class="field" placeholder="jane@example.com" required />
+              <label for="email">Email</label>
+              <input class="field" id="email" name="email" type="email" placeholder="you@example.com" required />
             </div>
             <div class="form-group">
-              <label for="budget">Project Budget</label>
-              <input type="text" id="budget" name="budget" class="field" placeholder="e.g. $5,000" />
+              <label for="company">Company</label>
+              <input class="field" id="company" name="company" type="text" placeholder="Your business name" />
             </div>
             <div class="form-group">
-              <label for="message">Project Details</label>
-              <textarea id="message" name="message" class="field" placeholder="Tell us about your business goals and what you need help with..." required></textarea>
+              <label for="budget">Budget</label>
+              <select class="field" id="budget" name="budget">
+                <option value="">Choose a range</option>
+                <option>$2,500 - $5,000</option>
+                <option>$5,000 - $10,000</option>
+                <option>$10,000+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="project">Project details</label>
+              <textarea class="field" id="project" name="project" placeholder="Tell us about your website goals, timeline, and what you need help with." required></textarea>
             </div>
             <div class="submit-row">
-              <button type="submit" class="btn btn-primary">Send Message</button>
+              <button type="submit" class="btn btn-primary">Send Inquiry</button>
+              <span class="form-note">Response within 1 business day.</span>
             </div>
+            <div class="status" id="formStatus" aria-live="polite"></div>
           </form>
         </div>
       </div>
@@ -584,21 +905,39 @@
   <footer>
     <div class="container footer-grid">
       <div>
-        <strong>Northstar Website Studio</strong>
-        <p style="margin-top: 0.5rem;">Columbus, OH</p>
+        <div class="brand" style="margin-bottom:.75rem;">
+          <span class="brand-mark">N</span>
+          <span>Northstar Website Studio</span>
+        </div>
+        <p class="small">A website creation company focused on custom website design, SEO-friendly websites, and conversion-focused websites for businesses that want a more credible and effective online presence.</p>
       </div>
       <div>
-        <p>&copy; 2026 Northstar Studio. All rights reserved.</p>
+        <strong style="color:#fff; display:block; margin-bottom:.7rem;">Quick links</strong>
+        <div class="small" style="display:grid; gap:.45rem;">
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="#results">Results</a>
+          <a href="#faq">FAQ</a>
+        </div>
       </div>
       <div>
-        <a href="#home">Back to top</a>
+        <strong style="color:#fff; display:block; margin-bottom:.7rem;">Contact</strong>
+        <div class="small" style="display:grid; gap:.45rem;">
+          <span>Columbus, OH</span>
+          <a href="mailto:hello@example.com">hello@example.com</a>
+          <a href="tel:+16145550198">(614) 555-0198</a>
+        </div>
       </div>
     </div>
   </footer>
 
   <script>
+    const GOOGLE_SCRIPT_URL = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+
     const menuToggle = document.getElementById('menuToggle');
     const siteNav = document.getElementById('siteNav');
+    const form = document.getElementById('inquiryForm');
+    const statusEl = document.getElementById('formStatus');
 
     menuToggle.addEventListener('click', () => {
       const open = siteNav.classList.toggle('is-open');
@@ -634,8 +973,8 @@
       });
     });
 
-    const revealEls = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window) {
+      const revealEls = document.querySelectorAll('.reveal');
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -646,7 +985,7 @@
       }, { threshold: 0.12 });
       revealEls.forEach(el => observer.observe(el));
     } else {
-      revealEls.forEach(el => el.classList.add('is-visible'));
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
     }
 
     window.addEventListener('resize', () => {
@@ -656,6 +995,46 @@
           answer.style.maxHeight = answer.scrollHeight + 'px';
         }
       });
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes('PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE')) {
+        statusEl.textContent = 'Add your Google Apps Script Web App URL in the script before sending inquiries.';
+        return;
+      }
+
+      statusEl.textContent = 'Sending...';
+
+      const formData = new FormData(form);
+      formData.append('pageUrl', window.location.href);
+      formData.append('userAgent', navigator.userAgent);
+
+      try {
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          body: formData
+        });
+
+        const text = await response.text();
+        let result;
+        try {
+          result = JSON.parse(text);
+        } catch {
+          throw new Error('Unexpected response from server.');
+        }
+
+        if (!result.ok) {
+          throw new Error(result.message || 'Submission failed.');
+        }
+
+        form.reset();
+        statusEl.textContent = 'Inquiry sent successfully.';
+      } catch (err) {
+        console.error(err);
+        statusEl.textContent = 'Something went wrong. Please try again.';
+      }
     });
   </script>
 </body>
